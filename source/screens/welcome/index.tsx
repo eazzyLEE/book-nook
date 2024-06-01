@@ -1,9 +1,9 @@
 import React from 'react';
-import {View} from 'react-native';
+import {Image, View} from 'react-native';
 import {styles} from './styles';
 import {Button, HeaderText, RegularText} from '@components';
-// import {Planet} from '@assets/';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
+import {WelcomeCover} from '@assets/images';
 
 const Welcome = () => {
   const navigation: NavigationProp<any> = useNavigation();
@@ -12,8 +12,9 @@ const Welcome = () => {
 
   return (
     <View style={styles.background}>
-      {/* <Planet /> */}
       <HeaderText title="BookNook" style={styles.leadText} />
+
+      <Image source={WelcomeCover} style={styles.image} resizeMode="contain" />
       <RegularText
         title="Discover Your Next Great Read"
         style={styles.subtext}

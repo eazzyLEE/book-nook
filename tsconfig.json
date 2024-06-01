@@ -8,7 +8,7 @@
       "@screens/*": ["./source/screens/*"],
       "@components": ["./source/components"],
       "@components/*": ["./source/components/*"],
-      "@assets/*": ["./assets/*"]
+      "@assets/*": ["./source/assets/*"],
     }
   }
 }
