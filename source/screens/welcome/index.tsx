@@ -1,9 +1,8 @@
 import React from 'react';
 import {View} from 'react-native';
 import {styles} from './styles';
-import {HeaderText, RegularText} from '@components/Text';
+import {Button, HeaderText, RegularText} from '@components';
 // import {Planet} from '@assets/';
-import {Button} from '@components/Button';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 
 const Welcome = () => {
