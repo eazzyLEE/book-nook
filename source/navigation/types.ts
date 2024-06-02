@@ -5,6 +5,7 @@ export type StackParamList = {
   home: undefined;
   book_list: undefined;
   book_detail: {book: Book};
+  cart: undefined;
 };
 
 export type BookListProps = NativeStackScreenProps<StackParamList, 'book_list'>;

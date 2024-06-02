@@ -1,15 +1,22 @@
 import React from 'react';
 import {Image, Pressable, View} from 'react-native';
 import {WelcomeCover} from '@assets/images';
-import {BackArrow, Cross, Dash} from '@assets/svgs';
+import {BackArrow, Book, Cart, Cross, Dash, Trash} from '@assets/svgs';
 import {Text} from '../Text';
 import {
   styles,
   fadeStyles as fStyles,
   controlStyles as cStyles,
+  cartItemStyles as iStyles,
+  iconStyles,
 } from './styles';
 import {Fade} from '../Fade';
-import {BookCardProps, ControlProps} from '../types';
+import {
+  BackButtonProps,
+  BookCardProps,
+  CartItemProps,
+  ControlProps,
+} from '../types';
 import {useNavigation} from '@react-navigation/native';
 
 export const BookCard = ({book, onPress}: BookCardProps) => {
@@ -75,14 +82,53 @@ export const CartControlButton = ({style}: ControlProps) => {
   );
 };
 
-export const BackButton = () => {
+export const BackButton = ({style}: BackButtonProps) => {
   const {goBack} = useNavigation();
 
   return (
     <Pressable
       onPress={goBack}
+      style={style}
       hitSlop={{top: 10, right: 10, left: 10, bottom: 10}}>
       <BackArrow />
     </Pressable>
+  );
+};
+
+export const CartIcon = () => {
+  const {navigate} = useNavigation();
+  const goToCart = () => navigate('cart');
+
+  return (
+    <Pressable onPress={goToCart}>
+      <View style={iconStyles.cartIndicator}>
+        <Text title="15" style={iconStyles.cartCount} type="p" />
+      </View>
+      <Cart />
+    </Pressable>
+  );
+};
+
+export const CartItem = ({style}: CartItemProps) => {
+  return (
+    <View style={[iStyles.itemView, style]}>
+      <View style={iStyles.nestedRow}>
+        <View style={iStyles.bookMargin}>
+          <Book />
+        </View>
+        <View style={iStyles.bookDetails}>
+          <Text title="The Swallows" />
+          <Text title="Lisa Lutz" style={iStyles.publisher} />
+          <Text title="₦ 28" style={iStyles.amount} />
+        </View>
+      </View>
+
+      <View style={iStyles.nestedRow}>
+        <CartControlButton />
+        <View style={iStyles.trashView}>
+          <Trash />
+        </View>
+      </View>
+    </View>
   );
 };

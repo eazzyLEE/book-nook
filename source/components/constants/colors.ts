@@ -7,3 +7,6 @@ export const MineShaft = '#2F2F2F';
 export const Pampas = '#FBFAF9';
 export const RollingStone = '#778089';
 export const OliveDrab = '#61AF2B';
+export const WildSand = '#F5F5F5';
+export const Abbey = '#424347';
+export const Bombay = '#B3B3B5';

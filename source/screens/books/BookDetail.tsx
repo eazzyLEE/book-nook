@@ -1,9 +1,14 @@
 import React from 'react';
 import {Image, View} from 'react-native';
-import {Cart} from '@assets/svgs';
 import {detailStyles as styles} from './styles';
 import {WelcomeCover} from '@assets/images';
-import {BackButton, Button, CartControlButton, Text} from '@components';
+import {
+  BackButton,
+  Button,
+  CartControlButton,
+  CartIcon,
+  Text,
+} from '@components';
 import {BookDetailProps} from '@navigation/types';
 
 const BookDetail = ({route}: BookDetailProps) => {
@@ -14,7 +19,7 @@ const BookDetail = ({route}: BookDetailProps) => {
     <View style={styles.background}>
       <View style={styles.headerPane}>
         <BackButton />
-        <Cart />
+        <CartIcon />
       </View>
       <View style={styles.detailView}>
         <Image source={WelcomeCover} style={styles.image} />

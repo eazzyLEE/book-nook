@@ -40,3 +40,11 @@ export type BookCardProps = {
 export type ControlProps = {
   style?: ViewStyle;
 };
+
+export type BackButtonProps = {
+  style?: ViewStyle;
+};
+
+export type CartItemProps = {
+  style?: ViewStyle;
+};

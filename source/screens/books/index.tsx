@@ -1,8 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from 'react';
 import {TextInput, View} from 'react-native';
-import {BookListFade, Gray, List, Text, filterArrayByText} from '@components';
-import {Cart, Search} from '@assets/svgs';
+import {
+  BookListFade,
+  CartIcon,
+  Gray,
+  List,
+  Text,
+  filterArrayByText,
+} from '@components';
+import {Search} from '@assets/svgs';
 import {styles} from './styles';
 import {useAppDispatch, useAppSelector} from '@store/hooks';
 import {getBooks} from '@store/thunks/book';
@@ -35,7 +42,7 @@ const BookList = ({navigation}: BookListProps) => {
     <View style={styles.background}>
       <View style={styles.headerPane}>
         <Text title="Explore Store" type="h1" />
-        <Cart />
+        <CartIcon />
       </View>
 
       <View style={styles.searchBar}>

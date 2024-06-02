@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     marginTop: hp(30),
   },
   buttonView: {
-    width: '100%',
+    width: '88%',
     alignItems: 'center',
     position: 'absolute',
     bottom: 35,

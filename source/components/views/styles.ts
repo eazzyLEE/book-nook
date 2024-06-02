@@ -1,5 +1,15 @@
 import {hp, wp} from '@components/utils';
-import {Concrete, FuzzyWuzzyBrown, Gray, MineShaft, White} from '@components';
+import {
+  Abbey,
+  Black,
+  Bombay,
+  Concrete,
+  FuzzyWuzzyBrown,
+  Gray,
+  MineShaft,
+  White,
+  WildSand,
+} from '@components';
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -107,5 +117,55 @@ export const controlStyles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
+  },
+});
+
+export const iconStyles = StyleSheet.create({
+  cartIndicator: {
+    height: wp(20),
+    width: wp(20),
+    borderRadius: wp(20) / 2,
+    backgroundColor: Black,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    top: -10,
+    right: -10,
+  },
+  cartCount: {
+    color: White,
+    fontSize: 10,
+  },
+});
+
+export const cartItemStyles = StyleSheet.create({
+  itemView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+  },
+  nestedRow: {
+    flexDirection: 'row',
+  },
+  trashView: {
+    width: wp(42),
+    height: hp(46),
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: WildSand,
+    marginLeft: wp(16),
+  },
+  bookMargin: {
+    marginTop: 4,
+  },
+  bookDetails: {
+    marginLeft: wp(16),
+  },
+  amount: {
+    marginTop: hp(7),
+    color: Abbey,
+  },
+  publisher: {
+    color: Bombay,
   },
 });
