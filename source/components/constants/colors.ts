@@ -10,3 +10,5 @@ export const OliveDrab = '#61AF2B';
 export const WildSand = '#F5F5F5';
 export const Abbey = '#424347';
 export const Bombay = '#B3B3B5';
+export const Alto = '#E0E0E0';
+export const WoodSmoke = '#0F1111';

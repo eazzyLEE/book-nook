@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Image, View} from 'react-native';
 import {detailStyles as styles} from './styles';
 import {WelcomeCover} from '@assets/images';
@@ -10,16 +10,43 @@ import {
   Text,
 } from '@components';
 import {BookDetailProps} from '@navigation/types';
+import {useAppDispatch, useAppSelector} from '@store/hooks';
+import {
+  addToCart,
+  removeFromCart,
+  removeFromCartByQuantity,
+} from '@store/slices/book';
 
 const BookDetail = ({route}: BookDetailProps) => {
+  const dispatch = useAppDispatch();
+  const {cart} = useAppSelector(state => state.books);
   const book = route.params.book;
-  const handleCartItem = () => {};
+  const quantity = cart.find(item => item.id === book.id)?.quantity || 1;
+  // const [quantity, setQuantity] = useState(1);
+
+  const idsInCart = cart.map(item => item.id);
+  const itemIsInCart = idsInCart.includes(book.id);
+  const handleCartItem = () => {
+    if (itemIsInCart) {
+      dispatch(removeFromCart(book));
+    } else {
+      dispatch(addToCart(book));
+    }
+  };
+  const increaseQuantity = () => dispatch(addToCart(book)); // setQuantity(previousQty => previousQty + 1);
+  const decreaseQuantity = () => {
+    if (quantity > 0) {
+      dispatch(removeFromCartByQuantity(book)); // setQuantity(previousQty => previousQty - 1);
+    }
+  };
+  const cartCount = cart.reduce((a, b) => a + b.quantity, 0);
+  const buttonTitle = itemIsInCart ? 'Remove from Cart' : 'Add to Cart';
 
   return (
     <View style={styles.background}>
       <View style={styles.headerPane}>
         <BackButton />
-        <CartIcon />
+        <CartIcon cartCount={cartCount} />
       </View>
       <View style={styles.detailView}>
         <Image source={WelcomeCover} style={styles.image} />
@@ -29,13 +56,22 @@ const BookDetail = ({route}: BookDetailProps) => {
             title={`Publisher: ${book.Publisher}`}
             style={styles.publisher}
           />
-          <Text title="₦ 55" style={styles.amount} type="h2" />
+          <Text title={`₦ ${book.price}`} style={styles.amount} type="h2" />
           <Text title="4.6" style={styles.ratingText} />
           <Text
             title="5,721 ratings  1,745 reviews"
             style={styles.ratingMetrics}
           />
-          <CartControlButton style={styles.controlButton} />
+          {itemIsInCart ? (
+            <CartControlButton
+              quantity={quantity}
+              style={styles.controlButton}
+              increase={increaseQuantity}
+              decrease={decreaseQuantity}
+            />
+          ) : (
+            <View style={styles.cartView} />
+          )}
         </View>
       </View>
 
@@ -49,7 +85,7 @@ const BookDetail = ({route}: BookDetailProps) => {
       </View>
 
       <View style={styles.buttonView}>
-        <Button title="Add to Cart" onPress={handleCartItem} />
+        <Button title={buttonTitle} onPress={handleCartItem} />
       </View>
     </View>
   );

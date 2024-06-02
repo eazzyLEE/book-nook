@@ -26,7 +26,7 @@ export const bookSlice = createSlice({
         state.cart.push({...payload, quantity: 1});
       }
     },
-    removeFromCart: (state, {payload}: {payload: Book}) => {
+    removeFromCartByQuantity: (state, {payload}: {payload: Book}) => {
       const cartItemPosition = state.cart.findIndex(
         book => book.id === payload.id,
       );
@@ -38,6 +38,14 @@ export const bookSlice = createSlice({
         } else {
           state.cart.splice(cartItemPosition, 1);
         }
+      }
+    },
+    removeFromCart: (state, {payload}: {payload: Book}) => {
+      const cartItemPosition = state.cart.findIndex(
+        book => book.id === payload.id,
+      );
+      if (cartItemPosition > -1) {
+        state.cart.splice(cartItemPosition, 1);
       }
     },
     resetLoader: state => ({
@@ -55,11 +63,15 @@ export const bookSlice = createSlice({
     builder.addCase(getBooks.fulfilled, (state, {payload}: any) => {
       state.message = 'Books retrieved';
       state.books = payload;
-      // payload.page === 1 ? (payload as any) : [...state.books, ...payload];
       state.loading = false;
     });
   },
 });
-export const {addToCart, removeFromCart, resetLoader} = bookSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  removeFromCartByQuantity,
+  resetLoader,
+} = bookSlice.actions;
 
 export default bookSlice.reducer;

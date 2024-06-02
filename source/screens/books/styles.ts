@@ -98,4 +98,7 @@ export const detailStyles = StyleSheet.create({
     position: 'absolute',
     bottom: 35,
   },
+  cartView: {
+    height: hp(45),
+  },
 });

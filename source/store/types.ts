@@ -8,16 +8,17 @@ export type Book = {
   Pages: number;
   Notes: string[];
   created_at: Date;
+  Price: string;
 };
 
-type CartItem = Book & {
+export type CartItemType = Book & {
   quantity: number;
 };
 
 export interface BookState {
   loading: boolean;
   message: string;
-  cart: CartItem[];
+  cart: CartItemType[];
   books: Book[];
   currentPage: number;
   error: string;

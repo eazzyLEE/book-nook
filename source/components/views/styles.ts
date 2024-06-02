@@ -64,6 +64,15 @@ export const styles = StyleSheet.create({
     alignItems: 'flex-start',
     width: '100%',
   },
+  removeView: {
+    borderWidth: 0.7,
+    backgroundColor: White,
+    borderColor: MineShaft,
+  },
+  removeTitle: {
+    color: Black,
+    fontSize: 11,
+  },
 });
 
 export const fadeStyles = StyleSheet.create({
@@ -140,6 +149,7 @@ export const iconStyles = StyleSheet.create({
 
 export const cartItemStyles = StyleSheet.create({
   itemView: {
+    width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',

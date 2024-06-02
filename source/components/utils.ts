@@ -20,3 +20,7 @@ export const filterArrayByText = (array: {Title: string}[], text: string) => {
     item.Title.toLowerCase().includes(text.toLowerCase()),
   );
 };
+
+export const truncate = (value: string, length: number) => {
+  return `${value.slice(0, length)}${value.length > length ? '...' : ''}`;
+};

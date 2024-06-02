@@ -1,6 +1,6 @@
 import {ReactNode} from 'react';
 import {ListRenderItem, StyleProp, TextStyle, ViewStyle} from 'react-native';
-import {Book} from '@store/types';
+import {Book, CartItemType} from '@store/types';
 
 type TextType = 'h1' | 'h2' | 'p';
 
@@ -35,9 +35,14 @@ export interface ListProps {
 export type BookCardProps = {
   book: Book;
   onPress: () => void;
+  toggleCartItem: () => void;
+  addedToCart: boolean;
 };
 
 export type ControlProps = {
+  decrease: () => void;
+  increase: () => void;
+  quantity: number;
   style?: ViewStyle;
 };
 
@@ -47,4 +52,8 @@ export type BackButtonProps = {
 
 export type CartItemProps = {
   style?: ViewStyle;
+  cartItem: CartItemType;
+  increaseQuantity: () => void;
+  decreaseQuantity: () => void;
+  removeItem: () => void;
 };

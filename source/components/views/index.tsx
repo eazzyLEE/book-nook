@@ -18,21 +18,32 @@ import {
   ControlProps,
 } from '../types';
 import {useNavigation} from '@react-navigation/native';
+import {truncate} from '@components/utils';
 
-export const BookCard = ({book, onPress}: BookCardProps) => {
+export const BookCard = ({
+  book,
+  onPress,
+  toggleCartItem,
+  addedToCart,
+}: BookCardProps) => {
+  const bookTitle = truncate(book.Title, 13);
+  const buttonTitle = addedToCart ? 'Remove' : 'Add to cart';
+  const buttonView = [styles.addToCartButton, addedToCart && styles.removeView];
+  const titleStyle = [styles.cartText, addedToCart && styles.removeTitle];
+
   return (
     <Pressable style={styles.cardView} onPress={onPress}>
       <Image source={WelcomeCover} style={styles.bookCover} />
       <View style={styles.infoText}>
-        <Text title={book.Title} style={styles.bookTitle} />
+        <Text title={bookTitle} style={styles.bookTitle} />
         <Text title={book.Publisher} style={styles.bookAuthor} />
       </View>
 
       <View style={styles.itemRow}>
-        <Text title="₦ 55" style={styles.amount} type="h2" />
-        <View style={styles.addToCartButton}>
-          <Text title="Add to cart" style={styles.cartText} />
-        </View>
+        <Text title={`₦ ${book.price}`} style={styles.amount} type="h2" />
+        <Pressable style={buttonView} onPress={toggleCartItem}>
+          <Text title={buttonTitle} style={titleStyle} />
+        </Pressable>
       </View>
     </Pressable>
   );
@@ -65,17 +76,23 @@ export const BookListFade = () => {
     </View>
   ));
 };
+const hitSlop = {top: 10, right: 10, left: 10, bottom: 10};
 
-export const CartControlButton = ({style}: ControlProps) => {
+export const CartControlButton = ({
+  quantity,
+  style,
+  decrease,
+  increase,
+}: ControlProps) => {
   return (
     <View style={[cStyles.block, style]}>
-      <Pressable>
+      <Pressable onPress={decrease} hitSlop={hitSlop}>
         <Dash />
       </Pressable>
       <View>
-        <Text title="1" />
+        <Text title={String(quantity)} />
       </View>
-      <Pressable>
+      <Pressable onPress={increase} hitSlop={hitSlop}>
         <Cross />
       </Pressable>
     </View>
@@ -95,21 +112,38 @@ export const BackButton = ({style}: BackButtonProps) => {
   );
 };
 
-export const CartIcon = () => {
+export const CartIcon = ({cartCount}: {cartCount: number}) => {
   const {navigate} = useNavigation();
   const goToCart = () => navigate('cart');
 
+  const noItemsInCart = cartCount === 0;
+
   return (
     <Pressable onPress={goToCart}>
-      <View style={iconStyles.cartIndicator}>
-        <Text title="15" style={iconStyles.cartCount} type="p" />
-      </View>
+      {noItemsInCart ? (
+        <View />
+      ) : (
+        <View style={iconStyles.cartIndicator}>
+          <Text
+            title={String(cartCount)}
+            style={iconStyles.cartCount}
+            type="p"
+          />
+        </View>
+      )}
       <Cart />
     </Pressable>
   );
 };
 
-export const CartItem = ({style}: CartItemProps) => {
+export const CartItem = ({
+  cartItem,
+  increaseQuantity,
+  decreaseQuantity,
+  removeItem,
+  style,
+}: CartItemProps) => {
+  const quantity = cartItem.quantity;
   return (
     <View style={[iStyles.itemView, style]}>
       <View style={iStyles.nestedRow}>
@@ -117,17 +151,22 @@ export const CartItem = ({style}: CartItemProps) => {
           <Book />
         </View>
         <View style={iStyles.bookDetails}>
-          <Text title="The Swallows" />
-          <Text title="Lisa Lutz" style={iStyles.publisher} />
-          <Text title="₦ 28" style={iStyles.amount} />
+          <Text title={cartItem.Title} />
+          <Text title={cartItem.Publisher} style={iStyles.publisher} />
+          <Text title={`₦ ${cartItem.price}`} style={iStyles.amount} />
         </View>
       </View>
 
       <View style={iStyles.nestedRow}>
-        <CartControlButton />
-        <View style={iStyles.trashView}>
+        <CartControlButton
+          quantity={quantity}
+          // style={styles.controlButton}
+          increase={increaseQuantity}
+          decrease={decreaseQuantity}
+        />
+        <Pressable style={iStyles.trashView} onPress={removeItem}>
           <Trash />
-        </View>
+        </Pressable>
       </View>
     </View>
   );
