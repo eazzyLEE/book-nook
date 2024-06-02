@@ -1,16 +1,33 @@
 import React from 'react';
-import {Text} from 'react-native';
-import {styles} from './styles';
+import {Text as RNText} from 'react-native';
 import {TextProps} from '../types';
+import {styles} from './styles';
 
-export const HeaderText = ({style, title}: TextProps) => (
-  <Text style={[styles.header, style]}>{title}</Text>
-);
-
-export const MediumText = ({style, title}: TextProps) => (
-  <Text style={[styles.medium, style]}>{title}</Text>
-);
-
-export const RegularText = ({style, title}: TextProps) => (
-  <Text style={[styles.regular, style]}>{title}</Text>
-);
+export const Text = ({children, onPress, style, title, type}: TextProps) => {
+  switch (type) {
+    case 'h1':
+      return (
+        <RNText onPress={onPress} style={[styles.boldText, style]}>
+          {children || title}
+        </RNText>
+      );
+    case 'h2':
+      return (
+        <RNText onPress={onPress} style={[styles.headerText, style]}>
+          {children || title}
+        </RNText>
+      );
+    case 'p':
+      return (
+        <RNText onPress={onPress} style={[styles.paragraphText, style]}>
+          {children || title}
+        </RNText>
+      );
+    default:
+      return (
+        <RNText onPress={onPress} style={[styles.text, style]}>
+          {children || title}
+        </RNText>
+      );
+  }
+};

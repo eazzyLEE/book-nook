@@ -1,0 +1,9 @@
+export const Black = '#000';
+export const White = '#FFF';
+export const Concrete = '#F2F2F2';
+export const Gray = '#888888';
+export const FuzzyWuzzyBrown = '#C1694F';
+export const MineShaft = '#2F2F2F';
+export const Pampas = '#FBFAF9';
+export const RollingStone = '#778089';
+export const OliveDrab = '#61AF2B';

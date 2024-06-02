@@ -1,19 +1,25 @@
 import {StyleSheet} from 'react-native';
+import * as Colors from '../constants/colors';
 
 export const styles = StyleSheet.create({
-  header: {
-    fontFamily: 'BricolageGrotesque-SemiBold',
-    fontSize: 20,
-    color: '#000',
-  },
-  regular: {
-    fontFamily: 'BricolageGrotesque-Regular',
-    fontSize: 14,
-    color: '#000',
-  },
-  medium: {
-    fontFamily: 'BricolageGrotesque-Medium',
+  text: {
     fontSize: 16,
-    color: '#000',
+    fontFamily: 'BricolageGrotesque-Regular',
+    color: Colors.Black,
+  },
+  headerText: {
+    fontSize: 18,
+    fontFamily: 'BricolageGrotesque-SemiBold',
+    color: Colors.Black,
+  },
+  boldText: {
+    fontSize: 24,
+    fontFamily: 'BricolageGrotesque-Bold',
+    color: Colors.Black,
+  },
+  paragraphText: {
+    fontSize: 20,
+    fontFamily: 'BricolageGrotesque-Medium',
+    color: Colors.Black,
   },
 });

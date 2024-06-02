@@ -9,6 +9,8 @@ module.exports = {
           '@screens': './source/screens',
           '@components': './source/components',
           '@assets': './source/assets',
+          '@store': './source/store',
+          '@navigation': './source/navigation',
         },
       },
     ],

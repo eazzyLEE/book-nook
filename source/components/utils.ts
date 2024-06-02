@@ -2,8 +2,8 @@ import {
   widthPercentageToDP as wdp,
   heightPercentageToDP as hdp,
 } from 'react-native-responsive-screen';
-const CustomHeight = 844 - 24; // 812
-const CustomWidth = 390; // 375
+const CustomHeight = 926 - 24; // 812
+const CustomWidth = 428; // 375
 
 export const hp = (value: number) => {
   const dimension = (value / CustomHeight) * 100;
@@ -13,4 +13,10 @@ export const hp = (value: number) => {
 export const wp = (value: number) => {
   const dimension = (value / CustomWidth) * 100;
   return wdp(`${dimension}%`);
+};
+
+export const filterArrayByText = (array: {Title: string}[], text: string) => {
+  return array.filter(item =>
+    item.Title.toLowerCase().includes(text.toLowerCase()),
+  );
 };
