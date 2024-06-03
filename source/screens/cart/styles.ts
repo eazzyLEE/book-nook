@@ -44,4 +44,9 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 35,
   },
+
+  emptyCartView: {
+    alignItems: 'center',
+    marginTop: hp(105),
+  },
 });

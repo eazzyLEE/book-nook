@@ -37,7 +37,6 @@ const BookList = ({navigation}: BookListProps) => {
       setBookList(books);
     }
   }, [searchText]);
-  console.log('bLList', bookList, 'books', books);
 
   const idsInCart = cart.map(item => item.id);
 

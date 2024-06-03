@@ -38,6 +38,7 @@ const Cart = ({navigation}: CartProps) => {
     (a, b) => a + b.quantity * Number(b.Price),
     0,
   );
+  const noItemsInCart = cart.length === 0;
 
   const purchase = () => {
     setModalVisible(true);
@@ -50,7 +51,7 @@ const Cart = ({navigation}: CartProps) => {
     dispatch(clearCart());
     setModalVisible(false);
     setPaymentProcessing(true);
-    navigation.reset({index: 0, routes: [{name: 'home'}]});
+    navigation.reset({index: 0, routes: [{name: 'book_list'}]});
   };
 
   return (
@@ -60,28 +61,41 @@ const Cart = ({navigation}: CartProps) => {
 
       <Text title="Order Summary" style={styles.headerTitle} />
 
-      <View style={styles.listView}>
-        <ScrollView>
-          {cart.map(item => (
-            <CartItem
-              cartItem={item}
-              style={styles.itemStyle}
-              increaseQuantity={() => increaseQuantity(item)}
-              decreaseQuantity={() => decreaseQuantity(item)}
-              removeItem={() => removeItem(item)}
+      {noItemsInCart ? (
+        <View style={styles.emptyCartView}>
+          <Text title="You have no items in the cart" />
+          <Text title="Select a book and add to cart to proceed" />
+        </View>
+      ) : (
+        <>
+          <View style={styles.listView}>
+            <ScrollView>
+              {cart.map(item => (
+                <CartItem
+                  cartItem={item}
+                  style={styles.itemStyle}
+                  increaseQuantity={() => increaseQuantity(item)}
+                  decreaseQuantity={() => decreaseQuantity(item)}
+                  removeItem={() => removeItem(item)}
+                />
+              ))}
+            </ScrollView>
+          </View>
+          <View style={styles.divider} />
+          <View style={styles.totalView}>
+            <Text title="Total" style={styles.totalText} type="p" />
+            <Text
+              title={`₦ ${totalAmount}`}
+              style={styles.totalText}
+              type="h2"
             />
-          ))}
-        </ScrollView>
-      </View>
-      <View style={styles.divider} />
-      <View style={styles.totalView}>
-        <Text title="Total" style={styles.totalText} type="p" />
-        <Text title={`₦ ${totalAmount}`} style={styles.totalText} type="h2" />
-      </View>
+          </View>
 
-      <View style={styles.buttonView}>
-        <Button title="Pay Now" onPress={purchase} />
-      </View>
+          <View style={styles.buttonView}>
+            <Button title="Pay Now" onPress={purchase} />
+          </View>
+        </>
+      )}
 
       <Modal visible={modalVisible}>
         <ProgressView
