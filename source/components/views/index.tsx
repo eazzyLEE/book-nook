@@ -1,13 +1,22 @@
 import React from 'react';
-import {Image, Pressable, View} from 'react-native';
-import {WelcomeCover} from '@assets/images';
-import {BackArrow, Book, Cart, Cross, Dash, Trash} from '@assets/svgs';
+import {ActivityIndicator, Image, Pressable, View} from 'react-native';
+import {Rating as RatingLib} from '@kolking/react-native-rating';
+import {
+  BackArrow,
+  Book,
+  Cart,
+  Cross,
+  Dash,
+  GreenCheck,
+  Trash,
+} from '@assets/svgs';
 import {Text} from '../Text';
 import {
   styles,
   fadeStyles as fStyles,
   controlStyles as cStyles,
   cartItemStyles as iStyles,
+  progressStyles as pStyles,
   iconStyles,
 } from './styles';
 import {Fade} from '../Fade';
@@ -16,9 +25,11 @@ import {
   BookCardProps,
   CartItemProps,
   ControlProps,
+  ProgressViewProps,
 } from '../types';
 import {useNavigation} from '@react-navigation/native';
 import {truncate} from '@components/utils';
+import {Black, Button, imageList} from '@components';
 
 export const BookCard = ({
   book,
@@ -27,20 +38,21 @@ export const BookCard = ({
   addedToCart,
 }: BookCardProps) => {
   const bookTitle = truncate(book.Title, 13);
+  const image = imageList[book.ImageId];
   const buttonTitle = addedToCart ? 'Remove' : 'Add to cart';
   const buttonView = [styles.addToCartButton, addedToCart && styles.removeView];
   const titleStyle = [styles.cartText, addedToCart && styles.removeTitle];
 
   return (
     <Pressable style={styles.cardView} onPress={onPress}>
-      <Image source={WelcomeCover} style={styles.bookCover} />
+      <Image source={image} style={styles.bookCover} />
       <View style={styles.infoText}>
         <Text title={bookTitle} style={styles.bookTitle} />
         <Text title={book.Publisher} style={styles.bookAuthor} />
       </View>
 
       <View style={styles.itemRow}>
-        <Text title={`₦ ${book.price}`} style={styles.amount} type="h2" />
+        <Text title={`₦ ${book.Price}`} style={styles.amount} type="h2" />
         <Pressable style={buttonView} onPress={toggleCartItem}>
           <Text title={buttonTitle} style={titleStyle} />
         </Pressable>
@@ -55,23 +67,11 @@ export const BookListFade = () => {
       <Fade style={fStyles.mainCard}>
         <Fade style={fStyles.bookCoverFade} />
         <Fade style={fStyles.textFade} />
-
-        {/* <View style={fStyles.infoGrid}>
-          <Fade style={fStyles.mdBoxFade} />
-          <Fade style={fStyles.halfBoxFade} />
-        </View>
-        <Fade style={fStyles.bgCardFade} /> */}
       </Fade>
 
       <Fade style={fStyles.mainCard}>
         <Fade style={fStyles.bookCoverFade} />
         <Fade style={fStyles.textFade} />
-
-        {/* <View style={fStyles.infoGrid}>
-          <Fade style={fStyles.mdBoxFade} />
-          <Fade style={fStyles.halfBoxFade} />
-        </View>
-        <Fade style={fStyles.bgCardFade} /> */}
       </Fade>
     </View>
   ));
@@ -153,7 +153,7 @@ export const CartItem = ({
         <View style={iStyles.bookDetails}>
           <Text title={cartItem.Title} />
           <Text title={cartItem.Publisher} style={iStyles.publisher} />
-          <Text title={`₦ ${cartItem.price}`} style={iStyles.amount} />
+          <Text title={`₦ ${cartItem.Price}`} style={iStyles.amount} />
         </View>
       </View>
 
@@ -170,4 +170,35 @@ export const CartItem = ({
       </View>
     </View>
   );
+};
+
+export const ProgressView = ({
+  processing,
+  completeOrder,
+}: ProgressViewProps) => {
+  if (processing) {
+    return (
+      <View style={pStyles.processingView}>
+        <ActivityIndicator size="large" color={Black} />
+        <Text title="Payment is processing..." style={pStyles.processingText} />
+      </View>
+    );
+  }
+  return (
+    <View style={pStyles.progressView}>
+      <Text title="Payment Successful" style={pStyles.title} type="h2" />
+      <View style={pStyles.checkView}>
+        <GreenCheck />
+      </View>
+      <Text
+        title="Your payment has been processed and your order is now processing..."
+        style={[pStyles.subtext]}
+      />
+      <Button title="Done" onPress={completeOrder} style={pStyles.button} />
+    </View>
+  );
+};
+
+export const Rating = () => {
+  return <RatingLib size={18} rating={4.6} />;
 };

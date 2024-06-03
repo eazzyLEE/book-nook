@@ -1,1 +1,11 @@
 export const WelcomeCover = require('./welcome-cover.png');
+export const ClapWhenYouLand = require('./clap-when-you-land.png');
+export const CoffeeTomorrow = require('./coffee-tomorrow.png');
+export const FallingStar = require('./falling-star.png');
+export const GoodSister = require('./good-sister.png');
+export const GreatGatsby = require('./great-gatsby.png');
+export const HarryPotter = require('./harry-potter.png');
+export const IAmEnough = require('./i-am-enough.png');
+export const JurassicPark = require('./jurassic-park.png');
+export const PsychologyOfSelling = require('./psychology-of-selling.png');
+export const Swallows = require('./swallows.png');

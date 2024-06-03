@@ -13,3 +13,4 @@ export type BookDetailProps = NativeStackScreenProps<
   StackParamList,
   'book_detail'
 >;
+export type CartProps = NativeStackScreenProps<StackParamList, 'cart'>;

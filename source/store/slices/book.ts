@@ -48,6 +48,10 @@ export const bookSlice = createSlice({
         state.cart.splice(cartItemPosition, 1);
       }
     },
+    clearCart: state => ({
+      ...state,
+      cart: [],
+    }),
     resetLoader: state => ({
       ...state,
       loading: false,
@@ -69,6 +73,7 @@ export const bookSlice = createSlice({
 });
 export const {
   addToCart,
+  clearCart,
   removeFromCart,
   removeFromCartByQuantity,
   resetLoader,

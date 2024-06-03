@@ -1,18 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {ScrollView, View} from 'react-native';
-import {BackButton, Button, CartItem, Text} from '@components';
+import {
+  BackButton,
+  Button,
+  CartItem,
+  Modal,
+  ProgressView,
+  Text,
+} from '@components';
 import {styles} from './styles';
 import {useAppDispatch, useAppSelector} from '@store/hooks';
 import {
   addToCart,
+  clearCart,
   removeFromCart,
   removeFromCartByQuantity,
 } from '@store/slices/book';
 import {CartItemType} from '@store/types';
+import {CartProps} from '@navigation/types';
 
-const Cart = () => {
+const Cart = ({navigation}: CartProps) => {
   const dispatch = useAppDispatch();
   const {cart} = useAppSelector(state => state.books);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [paymentProcessing, setPaymentProcessing] = useState(true);
+
   const increaseQuantity = (cartItem: CartItemType) =>
     dispatch(addToCart(cartItem));
   const decreaseQuantity = (cartItem: CartItemType) => {
@@ -23,10 +35,23 @@ const Cart = () => {
   const removeItem = (cartItem: CartItemType) =>
     dispatch(removeFromCart(cartItem));
   const totalAmount = cart.reduce(
-    (a, b) => a + b.quantity * Number(b.price),
+    (a, b) => a + b.quantity * Number(b.Price),
     0,
   );
-  const purchase = () => {};
+
+  const purchase = () => {
+    setModalVisible(true);
+    setTimeout(() => {
+      setPaymentProcessing(false);
+    }, 1300);
+  };
+
+  const completeOrder = () => {
+    dispatch(clearCart());
+    setModalVisible(false);
+    setPaymentProcessing(true);
+    navigation.reset({index: 0, routes: [{name: 'home'}]});
+  };
 
   return (
     <View style={styles.background}>
@@ -57,6 +82,13 @@ const Cart = () => {
       <View style={styles.buttonView}>
         <Button title="Pay Now" onPress={purchase} />
       </View>
+
+      <Modal visible={modalVisible}>
+        <ProgressView
+          processing={paymentProcessing}
+          completeOrder={completeOrder}
+        />
+      </Modal>
     </View>
   );
 };

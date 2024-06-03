@@ -57,3 +57,15 @@ export type CartItemProps = {
   decreaseQuantity: () => void;
   removeItem: () => void;
 };
+
+export interface ModalProps {
+  children: ReactNode;
+  visible: boolean;
+  style?: ViewStyle;
+  onBackDropPress?: () => void;
+}
+
+export type ProgressViewProps = {
+  processing: boolean;
+  completeOrder: () => void;
+};

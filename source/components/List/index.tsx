@@ -5,7 +5,6 @@ import {styles} from './styles';
 import {Text} from '../Text';
 
 export const List = ({data, renderItem, searchText}: ListProps) => {
-  console.log('dattewww', data);
   if (searchText && !data.length) {
     return (
       <View style={styles.noSearchResultsView}>

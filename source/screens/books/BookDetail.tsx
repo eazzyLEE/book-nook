@@ -1,13 +1,14 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Image, View} from 'react-native';
 import {detailStyles as styles} from './styles';
-import {WelcomeCover} from '@assets/images';
 import {
   BackButton,
   Button,
   CartControlButton,
   CartIcon,
+  Rating,
   Text,
+  imageList,
 } from '@components';
 import {BookDetailProps} from '@navigation/types';
 import {useAppDispatch, useAppSelector} from '@store/hooks';
@@ -22,8 +23,8 @@ const BookDetail = ({route}: BookDetailProps) => {
   const {cart} = useAppSelector(state => state.books);
   const book = route.params.book;
   const quantity = cart.find(item => item.id === book.id)?.quantity || 1;
-  // const [quantity, setQuantity] = useState(1);
 
+  const image = imageList[book.ImageId];
   const idsInCart = cart.map(item => item.id);
   const itemIsInCart = idsInCart.includes(book.id);
   const handleCartItem = () => {
@@ -49,15 +50,18 @@ const BookDetail = ({route}: BookDetailProps) => {
         <CartIcon cartCount={cartCount} />
       </View>
       <View style={styles.detailView}>
-        <Image source={WelcomeCover} style={styles.image} />
+        <Image source={image} style={styles.image} />
         <View style={styles.infoView}>
           <Text title={book.Title} style={styles.title} type="h1" />
           <Text
             title={`Publisher: ${book.Publisher}`}
             style={styles.publisher}
           />
-          <Text title={`₦ ${book.price}`} style={styles.amount} type="h2" />
-          <Text title="4.6" style={styles.ratingText} />
+          <Text title={`₦ ${book.Price}`} style={styles.amount} type="h2" />
+          <View style={styles.ratingView}>
+            <Text title="4.6" style={styles.ratingText} />
+            <Rating />
+          </View>
           <Text
             title="5,721 ratings  1,745 reviews"
             style={styles.ratingMetrics}

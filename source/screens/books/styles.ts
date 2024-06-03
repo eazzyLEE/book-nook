@@ -74,8 +74,13 @@ export const detailStyles = StyleSheet.create({
     lineHeight: 48,
     marginTop: 8,
   },
+  ratingView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   ratingText: {
     fontSize: 16,
+    marginRight: 6,
   },
   ratingMetrics: {
     fontSize: 14,

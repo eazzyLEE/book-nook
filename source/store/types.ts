@@ -9,6 +9,7 @@ export type Book = {
   Notes: string[];
   created_at: Date;
   Price: string;
+  ImageId: number;
 };
 
 export type CartItemType = Book & {

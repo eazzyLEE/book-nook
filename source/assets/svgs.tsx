@@ -117,3 +117,24 @@ export const Trash = (props: any) => (
     />
   </Svg>
 );
+
+export const GreenCheck = (props: any) => (
+  <Svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={32}
+    height={32}
+    fill="none"
+    {...props}>
+    <Path
+      fill="#128100"
+      d="M16 29.333c7.364 0 13.333-5.97 13.333-13.333 0-7.364-5.97-13.334-13.333-13.334C8.636 2.666 2.667 8.636 2.667 16S8.637 29.333 16 29.333Z"
+    />
+    <Path
+      stroke="#E0FAE1"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="m10 16 4 4 8-8m7.333 4c0 7.364-5.97 13.333-13.333 13.333-7.364 0-13.333-5.97-13.333-13.333C2.667 8.636 8.637 2.666 16 2.666c7.364 0 13.333 5.97 13.333 13.334Z"
+    />
+  </Svg>
+);

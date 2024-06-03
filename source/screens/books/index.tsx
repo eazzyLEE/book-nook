@@ -33,8 +33,11 @@ const BookList = ({navigation}: BookListProps) => {
     if (searchText.length) {
       const results = filterArrayByText(books, searchText);
       setBookList(results as Book[]);
+    } else {
+      setBookList(books);
     }
   }, [searchText]);
+  console.log('bLList', bookList, 'books', books);
 
   const idsInCart = cart.map(item => item.id);
 

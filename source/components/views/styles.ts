@@ -4,6 +4,7 @@ import {
   Black,
   Bombay,
   Concrete,
+  Feta,
   FuzzyWuzzyBrown,
   Gray,
   MineShaft,
@@ -177,5 +178,38 @@ export const cartItemStyles = StyleSheet.create({
   },
   publisher: {
     color: Bombay,
+  },
+});
+
+export const progressStyles = StyleSheet.create({
+  title: {
+    fontSize: 18,
+  },
+  progressView: {
+    alignItems: 'center',
+  },
+  processingView: {
+    marginVertical: hp(20),
+  },
+  processingText: {
+    marginTop: hp(15),
+  },
+  checkView: {
+    width: wp(60),
+    height: wp(60),
+    borderRadius: wp(60) / 2,
+    backgroundColor: Feta,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: hp(13),
+  },
+  subtext: {
+    marginTop: hp(4),
+    textAlign: 'center',
+  },
+  button: {
+    width: wp(310),
+    marginTop: hp(20),
+    alignSelf: 'center',
   },
 });
