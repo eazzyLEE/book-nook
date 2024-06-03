@@ -19,6 +19,19 @@ export const List = ({data, renderItem, searchText}: ListProps) => {
       keyExtractor={item => String(item.id)}
       numColumns={2}
       columnWrapperStyle={styles.row}
+
+      // WORKS BEST WITH PAGINATED APIs / IMPLEMENTATIONs
+      // refreshControl={
+      //   <RefreshControl
+      //     refreshing={isRefreshing}
+      //     onRefresh={handlePullToRefresh}
+      //     tintColor={Colors.Blue}
+      //     colors={[Colors.Blue]}
+      //   />
+      // }
+      // onEndReached={onEndReached}
+      // onEndReachedThreshold={0.7}
+      // onMomentumScrollBegin={() => setOnEndReachedCalled(false)}
     />
   );
 };

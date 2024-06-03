@@ -1,79 +1,125 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+Welcome to BookNook, a mobile platform where you can browse and purchase the latest and trending books.
+
+#Overview - The BookNook App
+
+BookNook is a React Native application designed to provide a seamless book browsing and purchasing experience. The app consists of three major screens: Home, Book List, and Cart. Users can browse a curated list of books, add them to their cart, and proceed to purchase.
+
+## Features
+
+### Home Screen
+- **Welcome Message**: Greet users with a friendly welcome message.
+- **Navigation**: Provides easy navigation to the Book List and Cart screens.
+
+### Book List Screen
+- **Book Display**: Retrieves and displays a list of books from the Stephen King API.
+- **Book Details**: Shows detailed information about each book, including the title, author, price, and cover image.
+- **Add to Cart**: Allows users to add books to their cart for later purchase.
+
+### Cart Screen
+- **Cart Display**: Shows all books that have been added to the cart.
+- **Cart Management**: Allows users to increase or decrease the quantity of books in the cart or remove them entirely.
+- **Purchase**: Provides an interface to proceed with the purchase of the books in the cart.
+
+## Technical Choices
+
+### React Native
+- **Cross-Platform Development**: Enables the app to run on both iOS and Android devices with a single codebase.
+
+### Libraries Used
+
+#### `react-navigation/native`
+- **Navigation**: Handles screen navigation within the app, providing a smooth user experience.
+
+#### `reduxjs/toolkit`
+- **State Management**: Simplifies state management with efficient and scalable Redux code.
+
+#### `react-redux`
+- **Redux Integration**: Connects Redux with React components, enabling the use of global state within the app.
+
+#### `redux-persist`
+- **State Persistence**: Persists Redux state across app restarts, ensuring a consistent user experience.
+
+#### `testing-library/jest-native`
+- **Testing**: Facilitates the testing of React Native components to ensure they work as expected.
+
+### API
+- **Stephen King API**: Fetches book data to be displayed in the Book List screen.
+
+## Project Structure
+
+
 
 # Getting Started
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+### Prerequisites
+- **Node.js**: Ensure Node.js (version 18 or higher) is installed.
+- **Yarn**: Install Yarn package manager.
 
-## Step 1: Start the Metro Server
+## Step 1: Clone this project
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+Clone this project with this command:
+
+```bash
+git clone https://github.com/eazzyLEE/book-nook.git
+
+```
+
+## Step 2: Install dependencies
+
+Install the project's dependencies by running the following
+
+```bash
+yarn install
+
+```
+
+## Step 3: Install Pods [For iOS]
+
+Install the project's cocoapod dependencies by running the following
+
+```bash
+cd ios && pod install && cd ..
+
+```
+
+## Step 4: Start the Metro Server [OPTIONAL]
+
+This is optional because your script should automatically start Metro server by default.
 
 To start Metro, run the following command from the _root_ of your React Native project:
 
 ```bash
-# using npm
-npm start
-
-# OR using Yarn
 yarn start
+
 ```
 
-## Step 2: Start your Application
+## Step 5: Start your Application
 
 Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
 
 ### For Android
 
 ```bash
-# using npm
-npm run android
-
-# OR using Yarn
 yarn android
+
 ```
 
 ### For iOS
 
 ```bash
-# using npm
-npm run ios
-
-# OR using Yarn
 yarn ios
+
 ```
+
+Or run from within Xcode
 
 If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
 
 This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
 
-## Step 3: Modifying your App
+### Screenshots
+![Start screen Screenshot]<img src="https://github.com/eazzyLEE/star-prime/assets/29065790/a796b048-62fe-47d0-b3de-797280c1f682" width="375" height="800" />
 
-Now that you have successfully run the app, let's modify it.
+![Movie Detail Screenshot StarPrime]<img src="https://github.com/eazzyLEE/star-prime/assets/29065790/0a49fdf4-6875-40d4-97bb-668d00f6e97c" width="375" height="800" />
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+![Movie List Screenshot]<img src="https://github.com/eazzyLEE/star-prime/assets/29065790/9675de70-fe4f-4141-b32f-2e2c29fdd6e5" width="375" height="800" />
