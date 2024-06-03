@@ -43,7 +43,7 @@ BookNook is a React Native application designed to provide a seamless book brows
 - **Testing**: Facilitates the testing of React Native components to ensure they work as expected.
 
 ### API
-- **Stephen King API**: Fetches book data to be displayed in the Book List screen.
+- **Stephen King API**: Fetches book data to be displayed in the Book List screen. P.S.: Unfortunately, this API has a relatively finite set of results and is not paginated. 
 
 ## Project Structure
 
