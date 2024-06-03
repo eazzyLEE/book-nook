@@ -1,6 +1,6 @@
 Welcome to BookNook, a mobile platform where you can browse and purchase the latest and trending books.
 
-#Overview - The BookNook App
+# Overview - The BookNook App
 
 BookNook is a React Native application designed to provide a seamless book browsing and purchasing experience. The app consists of three major screens: Home, Book List, and Cart. Users can browse a curated list of books, add them to their cart, and proceed to purchase.
 
@@ -118,8 +118,8 @@ If everything is set up _correctly_, you should see your new app running in your
 This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
 
 ### Screenshots
-![Start screen Screenshot]<img src="https://github.com/eazzyLEE/star-prime/assets/29065790/a796b048-62fe-47d0-b3de-797280c1f682" width="375" height="800" />
+![Book List Screenshot]<img src="https://github.com/eazzyLEE/book-nook/assets/29065790/01d52147-f56f-4e96-8516-6a973c71f407" width="375" height="800" />
 
-![Movie Detail Screenshot StarPrime]<img src="https://github.com/eazzyLEE/star-prime/assets/29065790/0a49fdf4-6875-40d4-97bb-668d00f6e97c" width="375" height="800" />
+![Book Detail Screenshot StarPrime]<img src="https://github.com/eazzyLEE/book-nook/assets/29065790/392a29ce-6247-4bdc-b708-03fb3068de4d" width="375" height="800" />
 
-![Movie List Screenshot]<img src="https://github.com/eazzyLEE/star-prime/assets/29065790/9675de70-fe4f-4141-b32f-2e2c29fdd6e5" width="375" height="800" />
+![Cart Screenshot]<img src="https://github.com/eazzyLEE/book-nook/assets/29065790/feeb4a16-78ae-4c76-a251-8fab69d92e16" width="375" height="800" />
